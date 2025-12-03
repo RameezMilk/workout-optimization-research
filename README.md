@@ -1,11 +1,13 @@
-# Graph Neural Network-Based Personalized Workout Optimization System
+# GNN-Based Personalized Workout Optimization System
 
 ### Author
 
 **Rameez E. Malik**
-Department of Computer Science
-North Carolina State University
-Email: [remalik@ncsu.edu](mailto:remalik@ncsu.edu)
+> Department of Computer Science
+
+> North Carolina State University
+
+> Email: [remalik@ncsu.edu](mailto:remalik@ncsu.edu)
 
 ---
 
@@ -62,17 +64,19 @@ Each component was written, tested, and documented by the author in Colab, then 
 
 * `compute_overload_targets(row)`:
   Generates next-session targets (`y_next_weight`, `y_next_reps`, `y_next_rest`) based on fatigue and RIR logic inspired by sports science literature.
-  **Developed by:** Rameez Malik
 
 * Derived metrics:
 
   * `training_load = volume × intensity`
   * `training_monotony = load / std(load)`
   * `strain = weekly_load × monotony`
-    **Purpose:** These variables quantify training variability and stress, grounding model features in physiological science (from PLOS ONE, 2019).
+  
+These variables quantify training variability and stress, grounding model features in physiological science (from PLOS ONE, 2019).
 
 **Purpose:**
 Transform raw workout logs into normalized numerical tensors suitable for graph-based learning.
+
+**Developed by:** Rameez Malik
 
 ---
 
@@ -86,8 +90,9 @@ Transform raw workout logs into normalized numerical tensors suitable for graph-
   * **Temporal edges:** Connect identical exercises across weeks to track progression.
 * Converts the graph to a PyTorch Geometric `Data` object using `from_networkx()`.
 
-**Developed by:** Rameez Malik
 **Purpose:** Define relational graph structure ( G = (V, E) ) for GNN message passing.
+
+**Developed by:** Rameez Malik
 
 ---
 
@@ -122,6 +127,7 @@ class ProposedGraphSAGE(nn.Module):
 
 **Purpose:**
 Implements an inductive GNN that uses neighborhood aggregation to generalize to unseen exercises.
+
 **Developed by:** Rameez Malik
 
 ---
@@ -130,7 +136,6 @@ Implements an inductive GNN that uses neighborhood aggregation to generalize to 
 
 **Function:** `train_model(model, data, optimizer, criterion, epochs=400)`
 Performs forward and backward propagation, prints loss every 20 epochs, and updates weights using Adam optimizer.
-**Developed by:** Rameez Malik
 
 **Metrics Used:**
 
@@ -138,6 +143,8 @@ Performs forward and backward propagation, prints loss every 20 epochs, and upda
 * **Root Mean Square Error (RMSE)**
 
 These were computed on both normalized and real scales for fair interpretability.
+
+**Developed by:** Rameez Malik
 
 ---
 
@@ -148,9 +155,10 @@ These were computed on both normalized and real scales for fair interpretability
 * **Predicted vs Actual Scatter Plots:** Compare model outputs for each target variable.
 * **SHAP Feature Importance:** Highlights the most influential features (training load, monotony, fatigue).
 
-**Developed by:** Rameez Malik
 **Purpose:**
 Visualize predictive reliability and physiological interpretability of the model.
+
+**Developed by:** Rameez Malik
 
 ---
 
