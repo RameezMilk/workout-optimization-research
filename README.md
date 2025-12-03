@@ -1,7 +1,3 @@
-Here is a professional, fully compliant `README.md` tailored to your repository structure and the course requirements. It clearly explains your project organization, authored code, class/function purposes, and execution steps.
-
----
-
 # Graph Neural Network-Based Personalized Workout Optimization System
 
 ### Author
